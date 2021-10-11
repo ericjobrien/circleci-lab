@@ -1,0 +1,17 @@
+version: 2.1
+orbs:
+  node: circleci/node@4.70
+jobs:
+  build:
+    executor:
+      name: node/default
+      tag: 'latest'
+    steps:
+      - checkout
+      - node/with-cache:
+        steps:
+          - run: npm install
+      - run: npm run test
+  
+
+  # example found here https://circleci.com/developer/orbs/orb/circleci/node
